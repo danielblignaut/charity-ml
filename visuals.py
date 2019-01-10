@@ -70,8 +70,9 @@ def evaluate(results, accuracy, f1):
     for k, learner in enumerate(results.keys()):
         for j, metric in enumerate(['train_time', 'acc_train', 'f_train', 'pred_time', 'acc_test', 'f_test']):
             for i in np.arange(3):
+
                 # Creative plot code
-                ax[j//3, j%3].bar(i+k*bar_width, 5, width = bar_width, color = colors[k])
+                ax[j//3, j%3].bar(i+k*bar_width, results[learner][i][metric], width = bar_width, color = colors[k])
                 ax[j//3, j%3].set_xticks([0.45, 1.45, 2.45])
                 ax[j//3, j%3].set_xticklabels(["1%", "10%", "100%"])
                 ax[j//3, j%3].set_xlabel("Training Set Size")
